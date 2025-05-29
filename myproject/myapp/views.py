@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
-
+from .models import ToDoList , Item
 # Create your views here.
 
-def index(response):
-  return HttpResponse("<h2>hey!<h2>")
-def index2(respose):
-  return HttpResponse("second page !!!!!!!!!!!")
-def index3(response):
-  return HttpResponse("index2/index3")
+def index(response,id):
+  ls = ToDoList.objects.get(id=id)
+  items = ls.item_set.get(id=1)
+  return HttpResponse("<h2> %s --- %s <h2>" % (ls.name , items.text) )
