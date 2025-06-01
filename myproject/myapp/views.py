@@ -23,7 +23,7 @@ def index(response,id):
       else:
         print("invalid!")
 
-  return render(response,"base/list.html",{"ls":ls} )
+  return render(response,"myapp/list.html",{"ls":ls} )
 
 def create(response):
   if response.method == "POST":
@@ -38,7 +38,7 @@ def create(response):
   else:
     form = CreateNewList()
     
-  return render(response,"base/create.html",{"form":form})
+  return render(response,"myapp/create.html",{"form":form})
 
 def home(response):
-  return render(response,"base/home.html",{})
+  return render(response,"myapp/home.html",{})
