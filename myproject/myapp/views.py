@@ -41,4 +41,5 @@ def create(response):
   return render(response,"myapp/create.html",{"form":form})
 
 def home(response):
+  
   return render(response,"myapp/home.html",{})
