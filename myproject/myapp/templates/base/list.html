@@ -8,26 +8,31 @@ List
   <h1> {{ls.name}} </h1>
   <form action="#" method="post">
     {% csrf_token%}
-    <ul>
-      {% for item in ls.item_set.all %}
+  
+    {% for item in ls.item_set.all %}
+      <div class="input-group nb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+          {% if item.complete == True %}
+               <input type="checkbox"  value="clicked" 
+               name="C{{item.id}}" checked>      
+          {% else %}
+              <input type="checkbox"  value="clicked"
+              name="C{{item.id}}">
+          {% endif %}
+          </div>
+        </div>
+        <input type="text" value={{item.text}} class="form-control">
 
-        {% if item.complete == True %}
-                <li>
-                   <input type="checkbox"  value="clicked" 
-                   name="C{{item.id}}" checked> {{item.text}} - COMPLETE 
-                </li>
-        {% else %}
-                <li>
-                  <input type="checkbox"  value="clicked"
-                   name="C{{item.id}}">{{item.text}} - INCOMPLETE 
-                </li>
-        {% endif %}
+      </div>
       {% endfor %}
-    </ul>
-    <button type="submit"  name="save"  value="save" >Save</button>
-
-    <input type="text"  name="new">
-
-    <button type="submit"  name="newItem"  value="newItem"> Add</button
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        
+        <button type="submit"  name="newItem"  value="newItem" class="btn btn-secondary" > Add Task</button>
+      </div>
+      <input type="text"  name="new">
+    </div>
+    <button type="submit"  name="save"  value="save" class="btn btn-success">Save</button>
 </form>
 {% endblock %}

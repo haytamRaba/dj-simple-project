@@ -4,12 +4,19 @@
 create New List
 {% endblock%}
 
+{% block quote%}
+A clear task today is a completed goal tomorrow.
+{% endblock%}
 {% block content %}
-create here :
+<h3>Add To List:</h3> 
 <form method="post" action="/create/">
-  {% csrf_token %}
- {{form.as_p}}
-<button type="submit" name="save">Create</button>
+    {% csrf_token %}
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+     <button type="submit" name="save" class="btn btn-success">Add Task</button>
+    </div>  
+     {{form.name}}
+  </div>
 </form>
 
 
